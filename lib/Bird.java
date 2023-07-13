@@ -11,12 +11,12 @@ import java.awt.Graphics;
 
 public class Bird extends JPanel {
 
-	// Bird attributes
+	// Thuộc tính của Chim 
 	public String color;
 	private int x, y;
 	private boolean isAlive = true;
 	
-	// Bird constants
+	// Thuộc tính không thay đổi của Chim (const)
 	private int FLOAT_MULTIPLIER      = -1;
 	public final int BIRD_WIDTH       = 44;
 	public final int BIRD_HEIGHT      = 31;
@@ -25,7 +25,7 @@ public class Bird extends JPanel {
 	private final int STARTING_BIRD_X = 90;
 	private final int STARTING_BIRD_Y = 343;
 	
-	// Physics variables
+	// Biến vật lý
 	private double velocity           = 0;
 	private double gravity            = .41;
 	private double delay              = 0;

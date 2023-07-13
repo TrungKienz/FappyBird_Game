@@ -12,7 +12,7 @@ import java.awt.geom.AffineTransform;
 
 public class Animation {
 
-	// Start at first frame
+	// Bắt đầu tại khung hình đầu tiên
 	private static double currentFrame = 0;
 
 	/**
@@ -30,19 +30,19 @@ public class Animation {
 		AffineTransform trans = g2d.getTransform();
 		AffineTransform at    = new AffineTransform();
 
-		// Number of frames
+		// Số khung hình
 		int count = sprites.length;
 
-		// Rotate the image
+		// Xoay ảnh
 		at.rotate(angle, x + 25, y + 25);
 		g2d.transform(at);
 
-		// Draw the current rotated frame
+		// Vẽ khung hình của hình ảnh đã được xoay
 		g2d.drawImage(sprites[(int) (Math.round(currentFrame))], x, y, null);
 
 		g2d.setTransform(trans);
 		
-		// Switch animation frames
+		// Chuyển đổi khung hình chuyển động
     if (currentFrame >= count - 1) {
         currentFrame = 0;
     } else currentFrame += speed;
