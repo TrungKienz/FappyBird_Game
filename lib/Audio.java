@@ -2,7 +2,7 @@
  * Audio.java
  * Plays all sound effects
  *
- * @author  Paul Krishnamurthy
+ * 
  */
 
 import javax.sound.sampled.AudioInputStream;

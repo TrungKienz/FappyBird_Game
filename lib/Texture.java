@@ -1,8 +1,8 @@
 /**
  * Texture.java
- * Stores data for game textures
+ * Lưu trữ dữ liệu cho các hình ảnh trong game
  *
- * @author  Paul Krishnamurthy
+
  */
 
 import java.awt.image.BufferedImage;
@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 
 public class Texture {
 
-	// Image attributes
+	// Thuộc tính của ảnh
 	private BufferedImage image;
 	private int x, y, width, height;
 	private Rectangle rect;
@@ -26,7 +26,7 @@ public class Texture {
 	}
 
 	////////////////////////////////////////////////
-	// Public getter methods for image attributes //
+	// Các phương thức getter công khai cho thuộc tính của ảnh //
 	////////////////////////////////////////////////
 
 	public BufferedImage getImage () {
@@ -54,4 +54,3 @@ public class Texture {
 	}
 
 }
-

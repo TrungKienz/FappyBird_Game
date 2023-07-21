@@ -1,8 +1,7 @@
 /**
  * FlappyBird.java
- * Main game class
+ * Lớp chính của trò chơi
  *
- * @author  Paul Krishnamurthy
  */
 
 import javax.swing.*;
@@ -14,7 +13,7 @@ public class FlappyBird extends JFrame implements ActionListener {
 	GamePanel game;
 	Timer gameTimer;
 
-	// Game setup constants
+	// Các hằng số thiết lập trò chơi
 	public static final int WIDTH  = 375;
 	public static final int HEIGHT = 667;
 	private static final int DELAY = 12;
@@ -25,28 +24,31 @@ public class FlappyBird extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(WIDTH, HEIGHT);
 
-		// Game timer
+		// Bộ đếm thời gian trò chơi
 		gameTimer = new Timer(DELAY, this);
 		gameTimer.start();
   
-  		// Add Panel to Frame
+  		// Thêm Panel vào Frame
 		game = new GamePanel();
 		add(game);
 
-		// Set game icon
+		// Đặt biểu tượng trò chơi
 		setIconImage(Toolkit.getDefaultToolkit().getImage("res/img/icons.png"));
 
 		setResizable(false);
 		setVisible(true);
 	}
 
-	public void actionPerformed (ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {
 
+		// Kiểm tra xem game đã được khởi tạo và sẵn sàng hay chưa
 		if (game != null && game.ready) {
+			// Yêu cầu game vẽ lại (repaint)
 			game.repaint();
 		}
-
+	
 	}
+	
 
 
 	public static void main(String[] args) {
@@ -56,4 +58,3 @@ public class FlappyBird extends JFrame implements ActionListener {
 	}
 
 }
-

@@ -1,8 +1,8 @@
 /**
  * Helper.java
- * Helper class with various tools
+ * Lớp Helper chứa các công cụ hỗ trợ khác nhau
  *
- * @author  Paul Krishnamurthy
+ * 
  */
 
 import java.awt.Desktop;
@@ -11,9 +11,9 @@ import java.net.URI;
 public class Helper {
 
 	/**
-	 * Tries to open url in default web browser
+	 * Thử mở URL trong trình duyệt web mặc định
 	 * 
-	 * @param url     Destination URL
+	 * @param url     URL đích
 	 */
 	public static void openURL (String url) {
 
@@ -23,7 +23,7 @@ public class Helper {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Sorry could not open URL...");
+			System.out.println("Xin lỗi, không thể mở URL...");
 		}
 
 	}

@@ -1,27 +1,26 @@
 /**
  * Pipe.java
- * Handles collisions and rendering for pipes
- *
- * @author  Paul Krishnamurthy
+ * Xử lý va chạm và hiển thị ống nước (pipe)
+
  */
 
 public class Pipe {
 
-	// Pipe coordinates
+	// Tọa độ của ống nước
 	private int x = FlappyBird.WIDTH + 5;
 	private int y;
 
-	// Placement (top or bottom) of pipe
+	// Vị trí (trên hoặc dưới) của ống nước
 	String location;
 
-	// Pipe constants
+	// Hằng số của ống nước
 	public static final int WIDTH         = 67;
 	public static final int HEIGHT        = 416;
-	public static final int PIPE_DISTANCE = 150;          // Horizontal distance between pipes
-	public static final int PIPE_SPACING  = HEIGHT + 170; // Vertical distance between pipes
+	public static final int PIPE_DISTANCE = 150;          // Khoảng cách ngang giữa hai ống nước
+	public static final int PIPE_SPACING  = HEIGHT + 170; // Khoảng cách dọc giữa hai ống nước
 	private static final int SPEED        = -2;
 
-	// If the bird can get a point passing this pipe
+	// Xác định xem chim có được điểm khi vượt qua ống nước này hay không
 	public boolean canAwardPoint = true;
 
 	public Pipe (String location) {
@@ -30,17 +29,17 @@ public class Pipe {
 	}
 
 	public void reset () {
-		x = FlappyBird.WIDTH + 5; // Reset x-coordinate
+		x = FlappyBird.WIDTH + 5; // Đặt lại tọa độ x
 
-		// Set boundaries for top pipes
-		// This y-coordinte + PIPE_SPACING will be for the bottom pipe
+		// Xác định giới hạn cho ống nước trên
+		// Tọa độ y này + PIPE_SPACING sẽ dùng cho ống nước dưới
 		if (location.equals("top")) {
 			y = - Math.max((int) (Math.random() * 320) + 30, 140);
 		}
 	}
 
 	/**
-	 * Moves the pipe
+	 * Di chuyển ống nước
 	 */
 	public void move () {
 		x += SPEED;
@@ -48,17 +47,17 @@ public class Pipe {
 
 
 	/**
-	 * Checks for bird colliding with pipe
+	 * Kiểm tra chim va chạm với ống nước
 	 * 
-	 * @param  nX     Bird x-coordinate
-	 * @param  nY     Bird y-coordinate
-	 * @param  nW     Bird width
-	 * @param  nH     Bird height
-	 * @return        If bird is colliding with the pipe
+	 * @param  nX     Tọa độ x của chim
+	 * @param  nY     Tọa độ y của chim
+	 * @param  nW     Chiều rộng của chim
+	 * @param  nH     Chiều cao của chim
+	 * @return        Trả về true nếu chim va chạm với ống nước, ngược lại trả về false
 	 */
 	public boolean collide (int nX, int nY, int nW, int nH) {
 
-		// Do not allow bird to jump over pipe
+		// Không cho phép chim nhảy qua ống nước
 		if (nX > x && nY < 0 && canAwardPoint) {
 			return true;
 		}
@@ -71,27 +70,26 @@ public class Pipe {
 	}
 
 	/**
-	 * @return     Pipe's x-coordinate
+	 * @return     Tọa độ x của ống nước
 	 */
 	public int getX () {
 		return x;
 	}
 
 	/**
-	 * @return     Pipe's y-coordinate
+	 * @return     Tọa độ y của ống nước
 	 */
 	public int getY () {
 		return y;
 	}
 
 	/**
-	 * Set's pipe's y-coordinate (for bottom pipes)
+	 * Đặt tọa độ y của ống nước (dành cho ống nước dưới)
 	 * 
-	 * @param newY     New y-coordinate
+	 * @param newY     Tọa độ y mới
 	 */
 	public void setY (int newY) {
 		y = newY;
 	}
 
 }
-

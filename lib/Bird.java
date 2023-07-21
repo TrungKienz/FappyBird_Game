@@ -1,8 +1,8 @@
 /**
  * Bird.java
- * Handles bird's state and actions
+ * Xử lý trạng thái và hành động của chim
  *
- * @author  Paul Krishnamurthy
+ * 
  */
 
 import javax.swing.JPanel;
@@ -35,7 +35,7 @@ public class Bird extends JPanel {
 	private BufferedImage[] sprites;
 
 
-	public Bird (String color, int x, int y, BufferedImage[] s) {
+	public Bird(String color, int x, int y, BufferedImage[] s) {
 		this.color = color;
 		this.x = x;
 		this.y = y;
@@ -43,49 +43,49 @@ public class Bird extends JPanel {
 	}
 
 	/**
-	 * @return     Bird's x-coordinate
+	 * @return     Tọa độ x của chim
 	 */
-	public int getX () {
+	public int getX() {
 		return x;
 	}
 
 	/**
-	 * @return     Bird's y-coordinate
+	 * @return     Tọa độ y của chim
 	 */
-	public int getY () {
+	public int getY() {
 		return y;
 	}
 
 	/**
-	 * @return     If bird is alive
+	 * @return     Trạng thái chim còn sống
 	 */
-	public boolean isAlive () {
+	public boolean isAlive() {
 		return isAlive;
 	}
 
 	/**
-	 * Kills bird
+	 * Tiêu diệt chim
 	 */
-	public void kill () {
+	public void kill() {
 		isAlive = false;
 	}
 
 	/**
-	 * Set new coordinates when starting game
+	 * Đặt lại vị trí khi bắt đầu chơi game
 	 */
-	public void setGameStartPos () {
+	public void setGameStartPos() {
 		x = STARTING_BIRD_X;
 		y = STARTING_BIRD_Y;
 	}
 
 	/**
-	 * Floating bird effect on menu screen
+	 * Hiệu ứng bay lượn của chim trên màn hình menu
 	 */
-	public void menuFloat () {
+	public void menuFloat() {
 
 		y += FLOAT_MULTIPLIER;
 
-		// Change direction within floating range
+		// Thay đổi hướng khi nằm ngoài khoảng bay lượn
 		if (y < 220) {
 			FLOAT_MULTIPLIER *= -1;
 		} else if (y > 280) {
@@ -95,9 +95,9 @@ public class Bird extends JPanel {
 	}
 
 	/**
-	 * Bird jump
+	 * Chim nhảy
 	 */
-	public void jump () {
+	public void jump() {
 
 		if (delay < 1) {
 			velocity = -SHIFT;
@@ -107,25 +107,27 @@ public class Bird extends JPanel {
 	}
 
 	/**
-	 * Bird movement during the game
+	 * Chuyển động của chim trong trò chơi
 	 */
-	public void inGame () {
+	public void inGame() {
 
-		// If the bird did not hit the base, lower it
+		// Nếu chim chưa va chạm với mặt đất, giảm chiều cao
 		if (y < BASE_COLLISION) {
 
-			// Change and velocity
+			// Thay đổi vận tốc
 			velocity += gravity;
 
-			// Lower delay if possible
-			if (delay > 0) { delay--; }
+			// Giảm độ trễ nếu có thể
+			if (delay > 0) {
+				delay--;
+			}
 
-			// Add rounded velocity to y-coordinate
+			// Cộng vận tốc vào tọa độ y
 			y += (int) velocity;
 
 		} else {
 
-			// Play audio and set state to dead
+			// Phát âm thanh và đặt trạng thái chim thành chết
 			GamePanel.audio.hit();
 			isAlive = false;
 		}
@@ -133,22 +135,22 @@ public class Bird extends JPanel {
 	}
 
 	/**
-	 * Renders bird
+	 * Hiển thị chim lên màn hình
 	 */
-	public void renderBird (Graphics g) {
+	public void renderBird(Graphics g) {
 
-		// Calculate angle to rotate bird based on y-velocity
+		// Tính góc quay của chim dựa trên vận tốc y
 		rotation = ((90 * (velocity + 25) / 25) - 90) * Math.PI / 180;
 		
-		// Divide for clean jump
+		// Chia để nhảy mượt mà hơn
 		rotation /= 2;
 
-		// Handle rotation offset
+		// Xử lý độ lệch quay
 		rotation = rotation > Math.PI / 2 ? Math.PI / 2 : rotation;
 
 		if (!isAlive()) {
 
-			// Drop bird on death
+			// Rơi chim khi chết
 			if (y < BASE_COLLISION - 10) {
 				velocity += gravity;
 				y += (int) velocity;
@@ -156,7 +158,7 @@ public class Bird extends JPanel {
 
 		}
 
-		// Create bird animation and pass in rotation angle
+		// Tạo hiệu ứng chuyển động chim và truyền góc quay
 		Animation.animate(g, sprites, x, y, .09, rotation);
 
 	}
